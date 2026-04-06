@@ -114,6 +114,10 @@ return {
           if client and client:supports_method('textDocument/inlayHint', event.buf) then
             map('<leader>th', function() vim.lsp.inlay_hint.enable(not vim.lsp.inlay_hint.is_enabled { bufnr = event.buf }) end, '[T]oggle Inlay [H]ints')
           end
+
+          -- disable hover for ruff
+          -- REFER: https://docs.astral.sh/ruff/editors/setup/#neovim
+          if client and client.name == 'ruff' then client.server_capabilities.hoverProvider = false end
         end,
       })
 
@@ -122,11 +126,43 @@ return {
       --  See `:help lsp-config` for information about keys and how to configure
       ---@type table<string, vim.lsp.Config>
       local servers = {
-        -- clangd = {},
-        -- gopls = {},
-        -- pyright = {},
+        clangd = {},
+        gopls = {
+          gopls = {
+            gofumpt = true,
+            staticcheck = true,
+          },
+        },
+        basedpyright = {
+          settings = {
+            basedpyright = {
+              disableOrganizeImports = true,
+            },
+          },
+        },
+        ruff = {},
+        bashls = {},
+        ts_ls = {
+          filetypes = { 'typescript', 'javascript', 'javascriptreact', 'typescriptreact', 'vue' },
+        },
+        -- djlint = { filetypes = { 'html', 'htmldjango' } },
+        html = {
+          filetypes = { 'html', 'twig', 'hbs' },
+          html = {
+            format = {
+              indentInnerHtml = true,
+            },
+          },
+        },
         -- rust_analyzer = {},
-        --
+        tinymist = {
+          settings = {
+            formatterMode = 'typstyle',
+            exportPdf = 'onType',
+            semanticTokens = 'disable',
+          },
+        },
+        docker_language_server = {},
         -- Some languages (like typescript) have entire language plugins that can be useful:
         --    https://github.com/pmizio/typescript-tools.nvim
         --
@@ -174,7 +210,12 @@ return {
       -- You can press `g?` for help in this menu.
       local ensure_installed = vim.tbl_keys(servers or {})
       vim.list_extend(ensure_installed, {
-        -- You can add other tools here that you want Mason to install
+        'shellcheck',
+        'css-lsp',
+        'shfmt',
+        'djlint',
+        'eslint_d',
+        'prettierd',
       })
 
       require('mason-tool-installer').setup { ensure_installed = ensure_installed }

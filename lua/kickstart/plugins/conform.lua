@@ -32,12 +32,23 @@ return {
         end
       end,
       formatters_by_ft = {
+        c = { 'clang_format' },
         lua = { 'stylua' },
+        vue = { 'prettierd', 'prettier', stop_after_first = true },
         -- Conform can also run multiple formatters sequentially
-        -- python = { "isort", "black" },
+        go = { 'goimports', 'gofumpt' },
+        python = { 'ruff_organize_imports', 'ruff_format' },
+        -- `tinymist` comes with `typstyle` support out of the box.
+        -- There seems to be an issue where neovim doesn't pickup that lsp supports formatting.
+        -- Once that is fixed, we can remove this line.
+        -- REFER: https://github.com/Myriad-Dreamin/tinymist/issues/2039
+        -- REFER: https://github.com/neovim/neovim/issues/24229
+        typst = { 'typstyle' },
+        yaml = { 'prettierd', 'prettier', 'yamlfmt', stop_after_first = true },
         --
         -- You can use 'stop_after_first' to run the first available formatter from the list
         -- javascript = { "prettierd", "prettier", stop_after_first = true },
+        --
       },
     },
   },
