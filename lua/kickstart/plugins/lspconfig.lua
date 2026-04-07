@@ -133,9 +133,16 @@ return {
             staticcheck = true,
           },
         },
-        basedpyright = {
+        -- basedpyright = {
+        --   settings = {
+        --     basedpyright = {
+        --       disableOrganizeImports = true,
+        --     },
+        --   },
+        -- },
+        pyright = {
           settings = {
-            basedpyright = {
+            pyright = {
               disableOrganizeImports = true,
             },
           },
