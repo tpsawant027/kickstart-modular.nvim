@@ -6,7 +6,7 @@ return {
   config = function()
     vim.cmd.colorscheme 'flexoki-light'
     -- vim.cmd.colorscheme 'ayu-dark'
-    -- vim.cmd.hi 'Comment gui=none'
+    vim.cmd.hi 'Comment gui=none'
   end,
 }
 
