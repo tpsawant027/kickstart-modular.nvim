@@ -169,7 +169,8 @@ return {
             semanticTokens = 'disable',
           },
         },
-        docker_language_server = {},
+        dockerls = {},
+        -- docker_language_server = {},
         -- Some languages (like typescript) have entire language plugins that can be useful:
         --    https://github.com/pmizio/typescript-tools.nvim
         --

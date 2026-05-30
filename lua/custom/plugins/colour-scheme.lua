@@ -1,6 +1,20 @@
+-- return {
+--   'Shatur/neovim-ayu',
+--   opts = {
+--     mirage = false,
+--     terminal = true,
+--     overrides = {
+--       Comment = { italic = false },
+--     },
+--   },
+--   config = function(_, opts)
+--     require('ayu').setup(opts)
+--
+--     vim.cmd.colorscheme 'ayu'
+--   end,
+-- }
+
 return {
-  -- 'Shatur/neovim-ayu',
-  -- 'kepano/flexoki-neovim',
   'rebelot/kanagawa.nvim',
   opts = {
     compile = false, -- enable compiling the colorscheme
