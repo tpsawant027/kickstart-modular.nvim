@@ -34,7 +34,6 @@ return {
       formatters_by_ft = {
         c = { 'clang_format' },
         lua = { 'stylua' },
-        vue = { 'prettierd', 'prettier', stop_after_first = true },
         -- Conform can also run multiple formatters sequentially
         go = { 'goimports', 'gofumpt' },
         python = { 'ruff_organize_imports', 'ruff_format' },
@@ -45,8 +44,14 @@ return {
         -- REFER: https://github.com/neovim/neovim/issues/24229
         typst = { 'typstyle' },
         yaml = { 'prettierd', 'prettier', 'yamlfmt', stop_after_first = true },
-        javascript = { 'prettierd', 'prettier', stop_after_first = true },
+        javascript = { 'oxfmt', 'prettierd', 'prettier', stop_after_first = true },
+        javascriptreact = { 'oxfmt', 'prettierd', 'prettier', stop_after_first = true },
+        typescript = { 'oxfmt', 'prettierd', 'prettier', stop_after_first = true },
+        typescriptreact = { 'oxfmt', 'prettierd', 'prettier', stop_after_first = true },
+        json = { 'oxfmt' },
+        vue = { 'oxfmt', 'prettierd', 'prettier', stop_after_first = true },
         markdown = { 'prettierd', 'prettier', stop_after_first = true },
+        ocaml = { 'ocamlformat' },
       },
     },
   },

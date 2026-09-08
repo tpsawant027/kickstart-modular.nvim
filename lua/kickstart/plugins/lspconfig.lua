@@ -128,9 +128,13 @@ return {
       local servers = {
         clangd = {},
         gopls = {
-          gopls = {
-            gofumpt = true,
-            staticcheck = true,
+          settings = {
+            gopls = {
+              buildFlags = { '-tags=integration' },
+              analyses = { unusedparams = true },
+              gofumpt = true,
+              staticcheck = true,
+            },
           },
         },
         -- basedpyright = {
@@ -152,6 +156,7 @@ return {
         ts_ls = {
           filetypes = { 'typescript', 'javascript', 'javascriptreact', 'typescriptreact', 'vue' },
         },
+        oxlint = {},
         -- djlint = { filetypes = { 'html', 'htmldjango' } },
         html = {
           filetypes = { 'html', 'twig', 'hbs' },
@@ -161,6 +166,7 @@ return {
             },
           },
         },
+        ocamllsp = {},
         -- rust_analyzer = {},
         tinymist = {
           settings = {
