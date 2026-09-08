@@ -12,3 +12,6 @@ spell/
 # nvim-pack-lock.json
 
 .DS_Store
+
+# personal, local-only notes - not for version control
+NOTES.md
