@@ -22,11 +22,26 @@ require('conform').setup {
   -- You can also specify external formatters in here.
   formatters_by_ft = {
     -- rust = { 'rustfmt' },
+    c = { 'clang_format' },
     -- Conform can also run multiple formatters sequentially
-    -- python = { "isort", "black" },
-    --
+    go = { 'goimports', 'gofumpt' },
+    python = { 'ruff_organize_imports', 'ruff_format' },
+    -- `tinymist` comes with `typstyle` support out of the box.
+    -- There seems to be an issue where neovim doesn't pickup that lsp supports formatting.
+    -- Once that is fixed, we can remove this line.
+    -- REFER: https://github.com/Myriad-Dreamin/tinymist/issues/2039
+    -- REFER: https://github.com/neovim/neovim/issues/24229
+    typst = { 'typstyle' },
+    yaml = { 'prettierd', 'prettier', 'yamlfmt', stop_after_first = true },
     -- You can use 'stop_after_first' to run the first available formatter from the list
-    -- javascript = { "prettierd", "prettier", stop_after_first = true },
+    javascript = { 'oxfmt', 'prettierd', 'prettier', stop_after_first = true },
+    javascriptreact = { 'oxfmt', 'prettierd', 'prettier', stop_after_first = true },
+    typescript = { 'oxfmt', 'prettierd', 'prettier', stop_after_first = true },
+    typescriptreact = { 'oxfmt', 'prettierd', 'prettier', stop_after_first = true },
+    json = { 'oxfmt' },
+    vue = { 'oxfmt', 'prettierd', 'prettier', stop_after_first = true },
+    markdown = { 'prettierd', 'prettier', stop_after_first = true },
+    ocaml = { 'ocamlformat' },
   },
 }
 
