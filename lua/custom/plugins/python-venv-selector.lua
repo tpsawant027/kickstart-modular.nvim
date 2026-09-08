@@ -1,12 +1,10 @@
-return {
-  'linux-cultist/venv-selector.nvim',
-  dependencies = {
-    { 'nvim-telescope/telescope.nvim', branch = 'master', dependencies = { 'nvim-lua/plenary.nvim' } },
-  },
-  ft = 'python',
-  keys = { { '<leader>vs', '<cmd>VenvSelect<cr>' } }, -- Open picker on keymap
-  opts = {
-    options = {}, -- plugin-wide options
-    search = {}, -- custom search definitions
-  },
+local function gh(repo) return 'https://github.com/' .. repo end
+
+vim.pack.add { gh 'linux-cultist/venv-selector.nvim' }
+
+require('venv-selector').setup {
+  options = {}, -- plugin-wide options
+  search = {}, -- custom search definitions
 }
+
+vim.keymap.set('n', '<leader>vs', '<cmd>VenvSelect<cr>', { desc = '[V]env [S]elect' })
