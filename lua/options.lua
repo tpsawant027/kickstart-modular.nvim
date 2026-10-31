@@ -10,7 +10,9 @@ vim.g.maplocalleader = ' '
 -- Set to true if you have a Nerd Font installed and selected in the terminal
 vim.g.have_nerd_font = true
 
-vim.g.python3_host_prog = vim.fn.expand '~/.nvim_pyenv/bin/python'
+-- Remote-plugin providers are unused (all plugins are Lua), so disable them
+vim.g.loaded_python3_provider = 0
+vim.g.loaded_node_provider = 0
 
 -- [[ Setting options ]]
 --  See `:help vim.o`
